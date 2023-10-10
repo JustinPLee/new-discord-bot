@@ -4,18 +4,6 @@ from requests_cache import CachedSession
 
 from logs.log import log
 
-def get_response(url: str) -> str:
-    assert url != ""
-
-    try:
-        session = CachedSession("api-cache", expire_after=timedelta(hours=4)).get(url)
-    except Exception as err:
-        log(err)
-        raise Exception("error retrieving cat data")
-    finally:
-        if session.status_code == 200:
-            return session
-
 from secret import CAT_KEY
 
 class CatApi:
