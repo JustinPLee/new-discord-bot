@@ -5,7 +5,7 @@ from typing import Union
 from bot.user import User
 
 from db.database import Database
-from log import log
+from logs.log import log
 
 # basically stores all data
 # controller for db operations

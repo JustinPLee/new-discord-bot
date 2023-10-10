@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from requests_cache import CachedSession
 
-from log import log
+from logs.log import log
 
 def get_response(url: str) -> str:
     assert url != ""

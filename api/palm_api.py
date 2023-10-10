@@ -2,7 +2,7 @@ import google.generativeai as palm
 
 from secret import PALM_KEY
 
-from log import log
+from logs.log import log
 
 palm.configure(api_key=PALM_KEY)
 

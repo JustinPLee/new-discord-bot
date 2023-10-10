@@ -12,7 +12,7 @@ from bot.manager import Manager
 
 from bot.user import User
 
-from log import log
+from logs.log import log
 
 from secret import COMMAND_PREFIX
 
