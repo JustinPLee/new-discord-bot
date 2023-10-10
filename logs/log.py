@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from secret import LOGGING
+from config import LOGGING
 
 def log(msg: str, append_before="") -> None:
     if not LOGGING:

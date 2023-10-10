@@ -11,37 +11,17 @@ from bot.embeds import Reminders, Forecast, Motivation, DailyCat
 from bot.manager import Manager
 
 from bot.user import User
+from bot.commands import COMMANDS
 
 from logs.log import log
 
-from secret import COMMAND_PREFIX
+from config import *
 
-
-"""Constants and setup"""
-# What time the bot sends a user daily messages
-# 7:30 AM PST by default
-TIME = datetime.time(hour=14, minute=30, tzinfo=datetime.timezone.utc)
-# Text API settings
-MOTIVATION_PROMPT = f"Generate a completely unique philosopical daily motivational quote that is perfect to start the day with, but with a humourous and quirky twist, using {datetime.datetime.now()} as a random seed"
-# Personality is the prefix of all prompts sent to the text api
-PERSONALITY = "Take on the personality of a funny, intelligent, and curious person when replying to this message: "
 
 intents = discord.Intents.default()
 # for rights to send DMs
 intents.message_content = True
 bot = commands.Bot(command_prefix=COMMAND_PREFIX, intents=intents)
-COMMANDS = [
-    ['sign-up', ''],
-    ['opt-out', ''],
-    ['forecast', '[location: `str`]'],
-    ['add-reminder', 'reminder: `str` [reminder2: `str`] [reminder3: `str`]'],
-    ['remove-reminder', '[index: `int`] [remove_all: `bool`]'],
-    ['view-reminders', ''],
-    ['motivation', ''],
-    ['help-commands', ''],
-    ['@BOT', 'msg: `str`']
-]
-
 manager = Manager(
     apis={
         'weather': WeatherApi,
@@ -283,17 +263,17 @@ async def help_commands(
         return None
 
     embed = discord.Embed(
-        title="Commands",
+        title="Mr. Weather Commands",
         color=discord.Color.random(),
         timestamp=datetime.datetime.now()
     )
-
     icon = discord.File("assets/bot_icon.jpg", filename="bot_icon.jpg")
     embed.set_image(url="attachment://bot_icon.jpg")
+    # table headers
 
-    for pair in COMMANDS:
-        name, params = pair
-        embed.add_field(name=name, value=params, inline=False)
+    for command in COMMANDS:
+        embed.add_field(name="", value=f"**{command['name']}**", inline=False)
+        embed.add_field(name="", value=command['description'], inline=False)
 
     await interaction.response.send_message(embed=embed, file=icon)
 

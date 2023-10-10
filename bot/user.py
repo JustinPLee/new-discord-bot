@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from secret import DEFAULT_LOCATION
+from config import DEFAULT_LOCATION
 
 # user type
 @dataclass(init=True, repr=True)

@@ -4,6 +4,7 @@ from datetime import datetime
 
 from bot.user import User
 
+
 class Forecast:
 
     # used for creating friendly advice
@@ -102,13 +103,14 @@ class Reminders:
         # TODO: use emojis instead of numbers
         index = 1
         for reminder in reminders:
-            embed.add_field(name=f"{index}. )", value=reminder, inline=False)
+            embed.add_field(name=f"{index}.", value=reminder, inline=False)
             index += 1
 
         if len(reminders) == 0:
             embed.add_field(name="", value=":partying_face: Yay! You have no reminders! :partying_face:")
 
         embed.set_thumbnail(url=user.display_avatar)
+        embed.set_footer(text=user.display_name, icon_url=user.display_avatar)
 
         return embed
         

@@ -1,10 +1,13 @@
 import discord
+
 import sqlite3
+
 from typing import Union
 
 from bot.user import User
 
 from db.database import Database
+
 from logs.log import log
 
 # basically stores all data
